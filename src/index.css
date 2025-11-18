@@ -1,0 +1,768 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root {
+    /* Font and Accessibility */
+    font-family: "Raleway", "Inter", Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    /* Primary Colors */
+    --primary: 235, 55%, 17%;
+    --primary-light: 236 47% 24%;
+    --primary-lightest: 236 62% 53%;
+    --primary-dark: 235 59% 13%;
+    --primary-lighter: 235 42% 50%;
+    --primary-darker: 235 42% 10%;
+    --primary-darkest: 235 42% 5%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary Colors */
+    --secondary: 230 54% 30%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Accent Colors */
+    --accent: 235 42% 35%; /* Lighter version of the primary color */
+    --accent-foreground: 0 0% 98%; /* Light foreground for contrast */
+
+    /* Neutral Grays */
+    --gray-00: 0 0% 99%;
+    --gray-0: 0 0% 98%;
+    --gray-1: 0 0% 96%;
+    --gray-2: 0 0% 92%;
+    --gray-3: 0 0% 85%;
+    --gray-4: 0 0% 70%;
+    --gray-5: 0 0% 50%;
+    --gray-6: 0 0% 30%;
+
+    /* Background and Foreground */
+    --background: 0 0% 99%;
+    --foreground: #16182f;
+
+    /* Card and Popover */
+    --card: 0 0% 99%;
+    --card-foreground: #16182f;
+    --popover: 0 0% 99%;
+    --popover-foreground: 299 54% 10%;
+
+    /* Muted Colors */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 50%;
+
+    /* Destructive Colors */
+    --destructive: 0 70% 40%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Alert Colors */
+    --error-dark: 0 70% 40%;
+    --error-light: 0 90% 80%;
+    --success-dark: 120 70% 40%;
+    --success-light: 120 90% 80%;
+    --warning-dark: 45 70% 40%;
+    --warning-light: 45 90% 80%;
+
+    /* Chart Colors */
+    --chart-1: 299 54% 40%;
+    --chart-2: 230 54% 30%;
+    --chart-3: 20 54% 30%;
+    --chart-4: 310 54% 40%;
+    --chart-5: 160 54% 35%;
+
+    /* Focus Ring */
+    --ring: 299 54% 25%;
+
+    /* Borders and Input */
+    --border: 235 15% 85%; /* Muted blue-gray for subtle borders */
+    --input: 235 15% 85%; /* Matches border for form consistency */
+
+    /* Radius */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 299 54% 10%;
+    --foreground: 0 0% 98%;
+    --card: 299 54% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 299 54% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 235, 55%, 17%;
+    --primary-light: 236 47% 24%;
+    --primary-lightest: 236 62% 53%;
+    --primary-dark: 235 59% 13%;
+    --primary-foreground: 299 54% 10%;
+
+    --secondary: 230 54% 30%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 299 54% 15%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 310 54% 40%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 70% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 299 54% 20%;
+    --input: 299 54% 20%;
+    --ring: 299 54% 60%;
+    --chart-1: 299 54% 60%;
+    --chart-2: 230 54% 45%;
+    --chart-3: 20 54% 45%;
+    --chart-4: 310 54% 50%;
+    --chart-5: 160 54% 45%;
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  [type="date"] {
+    background: #fff url("./assets/icons/google-calendar-icon.svg") 97% 50%
+      no-repeat;
+    background-size: 28px;
+  }
+
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
+  .bd {
+    border: 1px solid red;
+  }
+  /* Style the select button */
+  .select {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 3em;
+    line-height: 2;
+    background: white;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0.9px 1px 0px 0px hsl(0, 0%, 85%),
+      -1px -0px 1px 0px hsl(0, 30%, 85%);
+    /* Add a border for a clean look */
+  }
+
+  .select:hover {
+    box-shadow: 0.9px 1px 0px 0px hsl(235, 55%, 17%),
+      -1px -0px 1px 0px hsl(235, 55%, 17%);
+    /* Add a border for a clean look */
+  }
+
+  /* Style the arrow */
+  .select::after {
+    content: "\25BC ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 8px 16px;
+
+    color: hsl(299, 54%, 20%);
+    /* Set the arrow color */
+    cursor: pointer;
+    pointer-events: none;
+
+    transition: 0.25s all ease-in-out;
+  }
+
+  /* Change arrow color on hover */
+  .select:hover::after {
+    color: hsl(236, 62%, 53%);
+    background: hsl(235, 59%, 13%);
+  }
+
+  /* Style the select options */
+  .select select {
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+    margin: 0;
+    border: none;
+    background: transparent;
+    color: #333;
+    /* Set text color */
+    cursor: pointer;
+    appearance: none;
+    /* Remove default styles on Firefox */
+  }
+
+  /* Style the placeholder option */
+  .select select option[disabled] {
+    color: #888;
+  }
+
+  /* Style the selected option */
+  .select select option:checked {
+    background: hsl(236, 62%, 53%);
+    /* Highlight the selected option */
+    color: #fff;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+#users_table_length {
+  color: black;
+}
+#users_table_paginate {
+  color: black;
+}
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Raleway"),
+    url("./assets/fonts/Raleway-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Inter"),
+    url("./assets/fonts/Inter-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Helvetica";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Helvetica"),
+    url("./assets/fonts/Helvetica.ttf") format("truetype");
+}
+
+/* :root { */
+/* font-family: 'Raleway', 'Inter', Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%; */
+/* Primary Color Shades */
+/* --primary: hsl(299, 54%, 25%);
+  --primary-light: hsl(299, 54%, 40%);
+  --primary-lighter: hsl(299, 54%, 60%);
+  --primary-lightest: hsl(299, 54%, 80%);
+  --primary-dark: hsl(299, 54%, 20%);
+  --primary-darker: hsl(299, 54%, 15%);
+  --primary-darkest: hsl(299, 54%, 10%); */
+
+/* Secondary Colors */
+/* --secondary-1: hsl(230, 54%, 30%); */
+/* Cool tone complement */
+/* --secondary-2: hsl(20, 54%, 30%); */
+/* Warm tone complement */
+
+/* Accent Colors */
+/* --accent-1: hsl(310, 54%, 40%); */
+/* Slightly shifted primary for accents */
+/* --accent-2: hsl(160, 54%, 35%); */
+/* Greenish accent for balance */
+
+/* Neutral Grays */
+/* --gray-00: hsl(0, 0%, 99%);
+  --gray-0: hsl(0, 0%, 98%);
+  --gray-1: hsl(0, 0%, 96%);
+  --gray-2: hsl(0, 0%, 92%);
+  --gray-3: hsl(0, 0%, 85%);
+  --gray-4: hsl(0, 0%, 70%);
+  --gray-5: hsl(0, 0%, 50%);
+  --gray-6: hsl(0, 0%, 30%); */
+
+/* Dark Tones */
+/* --dark-0: hsl(299, 54%, 10%);
+  --dark-1: hsl(299, 54%, 15%);
+  --dark-2: hsl(299, 54%, 20%); */
+
+/* Alert Colors */
+/* --error-dark: hsl(0, 70%, 40%);
+  --error-light: hsl(0, 90%, 80%);
+  --success-dark: hsl(120, 70%, 40%);
+  --success-light: hsl(120, 90%, 80%);
+  --warning-dark: hsl(45, 70%, 40%);
+  --warning-light: hsl(45, 90%, 80%); */
+
+/* others */
+
+/* --popover: hsl(0, 0%, 99%);
+  --ring: hsl(299, 54%, 25%);
+  --chart-1: hsl(299, 54%, 40%);
+  --chart-2: hsl(230, 54%, 30%);
+  --chart-3: hsl(20, 54%, 30%);
+  --chart-4: hsl(310, 54%, 40%);
+  --chart-5: hsl(160, 54%, 35%); 
+  --background: hsl(0, 0%, 99%);
+  --secondary: hsl(230, 54%, 30%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 96%); */
+/* --muted-foreground: hsl(0, 0%, 50%); */
+/* --accent: hsl(310, 54%, 40%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 70%, 40%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --primary-foreground: hsl(0, 0%, 98%);
+  --foreground: hsl(299, 54%, 10%);         
+  --popover-foreground: hsl(299, 54%, 10%); */
+/* 
+  --card: hsl(0, 0%, 99%);
+  --card-foreground: hsl(299, 54%, 10%);
+  --border: hsl(0, 0%, 92%);
+  --input: hsl(0, 0%, 92%);
+  */
+
+/* --popover: hsl(0, 0%, 99%); */
+/* --background: hsl(0, 0%, 99%);
+  --foreground: hsl(299, 54%, 10%);
+  --card: hsl(0, 0%, 99%);
+  --muted: hsl(0, 0%, 96%);
+  --muted-foreground: hsl(0, 0%, 50%);
+--card-foreground: hsl(299, 54%, 10%);
+--popover-foreground: hsl(299, 54%, 10%);
+--primary: hsl(299, 54%, 25%);
+--primary-foreground: hsl(0, 0%, 98%);
+--secondary: hsl(230, 54%, 30%);
+--secondary-foreground: hsl(0, 0%, 98%);
+--accent: hsl(310, 54%, 40%);
+--accent-foreground: hsl(0, 0%, 98%);
+--destructive: hsl(0, 70%, 40%);
+--destructive-foreground: hsl(0, 0%, 98%); */
+/* --border: hsl(0, 0%, 92%); */
+/* --input: hsl(0, 0%, 92%); */
+/* --ring: hsl(299, 54%, 25%);
+--chart-1: hsl(299, 54%, 40%);
+--chart-2: hsl(230, 54%, 30%);
+--chart-3: hsl(20, 54%, 30%);
+--chart-4: hsl(310, 54%, 40%);
+--chart-5: hsl(160, 54%, 35%); 
+--radius: 0.5rem;
+
+
+} */
+
+html {
+  font-family: "Raleway", "Inter", Helvetica, Arial, sans-serif;
+}
+
+a {
+  font-weight: 500;
+
+  text-decoration: inherit;
+  transition: all 0.25s;
+}
+
+a:hover {
+  transition: all 0.25s;
+  color: hsl(236, 62%, 53%);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8e9f1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1b2048;
+  border-radius: 6px;
+  border: 2px solid #e8e9f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #131736;
+}
+
+/* 
+
+
+     ----------------------
+     | button customization |
+      ---------------------- */
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+/* button:hover {
+  border-color: #646cff;
+} */
+/* button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+} */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: hsl(310, 54%, 40%);
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+
+  padding: 0.375rem 0.75rem;
+
+  line-height: 1.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Primary Button */
+.btn-primary {
+  color: #fff;
+  background-color: hsl(235, 55%, 17%);
+  border-radius: 6px;
+}
+
+.btn-secondary {
+  color: hsl(235, 20%, 17%);
+  background-color: transparent;
+  border-radius: 8px;
+  border: hsl(235, 55%, 17%) solid 1px;
+  transition: all 4s ease-in-out;
+}
+
+.btn-tertiary {
+  color: hsl(235, 55%, 17%);
+  background: transparent;
+  transition: all 4s ease-in-out;
+}
+
+.custom-button {
+  display: flex;
+  font-weight: 700;
+  padding: 10px 20px;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 50px;
+  gap: 10px;
+  color: white !important;
+  background-color: #2e3353 !important;
+}
+
+.custom-icon-bcg {
+  border-radius: 50%;
+  background: hsl(235, 55%, 17%);
+  /* background: radial-gradient(circle at center, transparent 40%, hsl(30, 22%, 93%) 41%); */
+  /* box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0px -1px 2px 1px hsl(236, 47%, 24%),
+    inset 0px 2px 2px 1px hsl(235, 59%, 13%);
+  font-weight: 800;
+}
+
+.custom_submerged_gray {
+  border-radius: 50%;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:
+    /* inset 0px -1px 2px 1px hsl(0, 0%, 80%), */ inset 0px 2px 2px
+    1px hsl(0, 0%, 60%);
+}
+
+/* .buttons-html5 {
+    border: hsla(100, 0%, 70%, 1) solid 1px;
+    font-size: 12px;
+    background-color: hsla(100, 0%, 90%, 1);
+    color:hsl(0, 0%, 30%);
+    transition: all 4s ease-in-out ;
+  }
+  
+  
+  .buttons-html5:hover{
+  transform: scale(1.01);
+    border: hsla(100, 0%, 70%, 1) solid 1.5px;
+    font-size: 12px;
+    background-color: hsla(100, 0%, 70%, 1);
+    color:hsl(0, 0%, 10%)
+  }
+  
+  .buttons-html5:disabled{
+    transform: scale(1.01);
+      border: hsla(100, 0%, 70%, 1) solid 1.5px;
+      font-size: 12px;
+      background-color: hsla(100, 0%, 80%, 1);
+      color:hsl(0, 0%, 60%)
+    } */
+/* Success Button */
+
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+/* Danger Button */
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* general styling from the  */
+
+/*
+--------------------
+      DASHBOARD
+--------------------
+
+*/
+.popover-trigger {
+  padding: 10px;
+}
+
+.popover-content {
+  position: absolute;
+  padding: 4px;
+  top: -320%;
+  left: 0%;
+  width: 200px;
+  visibility: hidden;
+  opacity: 0.8;
+}
+
+.popover-content::before {
+  content: "";
+
+  position: absolute;
+  bottom: -18px;
+  left: 5%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: hsl(120, 50%, 80%) transparent transparent transparent;
+}
+
+.info-when-hover:hover + .popover-content {
+  visibility: visible;
+}
+
+/* lets talk about the active button 
+ */
+
+.active {
+  background-color: hsl(207, 73%, 90%);
+  display: flex;
+  min-width: 50px;
+  width: calc(100%);
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.submerged_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  box-shadow: inset 0px -1px 1px 0.5px hsla(0, 0%, 90%, 0.9),
+    inset 0px 1px 1px 1px hsla(0, 0%, 0%, 0.6);
+  border-radius: 50%;
+}
+
+.elevated-button {
+  appearance: none;
+  border-radius: 10px;
+
+  text-transform: capitalize;
+}
+
+.elevated-paper {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.elevated-paper-round {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 100%;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+.submerged-paper {
+  box-shadow: inset 0px 3px 2px 1px hsl(299, 54%, 10%),
+    inset 0px 5px 2px 2px hsl(0, 0%, 50%),
+    inset 0px -3px 2px 2px hsl(0, 0%, 50%);
+  border-radius: 10px;
+}
+
+.submerged-paper-square {
+  box-shadow: inset 0px 3px 2px 1px hsl(299, 54%, 10%),
+    inset 0px 5px 2px 2px hsl(0, 0%, 50%),
+    inset 0px -3px 2px 2px hsl(0, 0%, 50%);
+}
+
+.submerged-paper-round {
+  box-shadow: inset 0px 3px 2px 2px hsl(299, 54%, 10%),
+    inset 0px 5px 1px 2px hsl(0, 0%, 50%),
+    inset 0px -3px 2px 2px hsl(0, 0%, 50%);
+  border-radius: 100%;
+}
+.sm-elevated-paper {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+
+  box-shadow: 0px 2px 1px 0px hsla(235, 42%, 20%, 0.3),
+    0px 1px 1px 0px hsla(235, 42%, 20%, 0.2),
+    0px 1px 3px 0px hsla(235, 42%, 20%, 0.3);
+}
+
+.custom-elevated-paper {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+
+  box-shadow: -1px 2px 1px -1px hsla(235, 42%, 20%, 0.5),
+    0px 1px 1px 0px hsla(235, 42%, 20%, 0.5),
+    -1px -1px 3px 0px hsla(235, 42%, 20%, 0.3);
+  transition: all 100ms;
+}
+
+.custom-elevated-paper:hover {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+
+  box-shadow: -1px 2px 2px 0px hsla(235, 42%, 20%, 0.26),
+    /* 0.26 opacity for hover effect */ 0px 1px 2px 1px
+      hsla(235, 42%, 20%, 0.26),
+    -1px -1px 4px 1px hsla(235, 42%, 20%, 0.26);
+}
+
+.custom-submerged-paper {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+
+  box-shadow: inset 0px 2px 1px 0px hsla(235, 42%, 20%, 0.3),
+    inset 0px 1px 1px 0px hsla(235, 42%, 20%, 0.2),
+    inset 0px 1px 3px 0px hsla(235, 42%, 20%, 0.3),
+    inset 0px 2px 1px 0px hsla(235, 42%, 20%, 0.3),
+    inset 0px 1px 1px 0px hsla(235, 42%, 20%, 0.2),
+    inset 0px 1px 3px 0px hsla(235, 42%, 20%, 0.3);
+}
+
+.elated-paper {
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: -2px 6px 1px -1px rgba(0, 0, 0, 0.2),
+    -2px 0px 1px 1px rgba(0, 0, 0, 0.1), -3px 3px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 1px 0px rgba(0, 0, 0, 0.14), 0px 5px 3px 2px rgba(0, 0, 0, 0.12),
+    -1px -1px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.n-elevated-paper {
+  border-radius: 4px;
+
+  box-shadow: 1px 3px 2px -2px rgba(0, 0, 0, 0.2),
+    1px 3px 4px 1px rgba(0, 0, 0, 0.14), 1px 2px 4px 2px rgba(0, 0, 0, 0.5),
+    1px 3px 2px -2px rgba(255, 255, 255, 0.2),
+    1px 3px 4px 1px rgba(255, 255, 255, 0.14),
+    1px 2px 4px 2px rgba(255, 255, 255, 0.5);
+}
+
+.n-elevated-paper-round {
+  border-radius: 50%;
+
+  box-shadow: 1px 3px 2px -2px rgba(0, 0, 0, 0.2),
+    1px 3px 4px 1px rgba(0, 0, 0, 0.14), 1px 2px 4px 2px rgba(0, 0, 0, 0.5),
+    1px 3px 2px -2px rgba(255, 255, 255, 0.2),
+    1px 3px 4px 1px rgba(255, 255, 255, 0.14),
+    1px 2px 4px 2px rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (max-width: 600px) {
+  .hidders {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .hidder {
+    display: hidden;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.MuiListItemButton-root .MuiTouchRipple-child {
+  background-color: hsl(0, 0%, 92%);
+}

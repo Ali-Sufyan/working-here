@@ -1,0 +1,29 @@
+.zoom-tool {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    /* Position at the horizontal center */
+    transform: translateX(-50%);
+    /* Adjust horizontally to center */
+    background: var(--gray-00);
+    padding: 10px;
+    background: var(--gray-00);
+
+
+}
+
+.zoom-group-icons {
+    display: flex;
+}
+
+.zoom-icons {
+    cursor: pointer;
+    font-size: 16px;
+    min-width: 32px;
+    max-width: 32px;
+    font-weight: bold;
+    text-align: center;
+
+
+
+}
